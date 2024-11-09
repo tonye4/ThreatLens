@@ -1,13 +1,19 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import SearchParams from "./components/SearchParams";
+import Consent from "./components/DataConsent";
 
-// TODO: Create a dashboard
+// TODO: Create forum search params 
+// TODO: Make do you consent form that pops up before forum
 
 const App = () => {
     return (
-        <h1>Threat lens</h1>
-    )
-}
+        <div>
+            <SearchParams />
+            <Consent />
+        </div>
+    );
+};
 
 const container = document.getElementById("root");
 const root = createRoot(container); 
