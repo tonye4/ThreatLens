@@ -8,7 +8,7 @@ import Consent from "./components/DataConsent";
 
 const App = () => {
     return (
-        <div>
+        <div className="App">
             <SearchParams />
             <Consent />
         </div>
