@@ -1,0 +1,1 @@
+export PATH=${PATH}:/usr/local/mysql-8.4.3-macos14-arm64/bin

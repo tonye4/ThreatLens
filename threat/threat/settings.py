@@ -77,8 +77,11 @@ WSGI_APPLICATION = 'threat.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ThreatLens',
+        'USER': 'root',
+        'PASSWORD': 'Kobe-2424',
+        'HOST': 'localhost',
     }
 }
 
