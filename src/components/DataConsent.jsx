@@ -1,10 +1,7 @@
 import { useState } from "react";
 import "./consentModal.css"
 
-function Consent(){
-    const[openModal, setOpenModal] = useState(true); // want it to be open on first page load, so set state to true.
-    if(openModal != true)
-        return null;
+function Consent({setOpenModal}){
 
     return( 
         <div className="consentModal-bg">
@@ -22,7 +19,7 @@ function Consent(){
                     <p>By continuing, you agree with the information shared above. If you're unsure, feel free to read our full privacy policy for more details.</p>
                 </div>
                 <div className="footer">
-                    <button>Learn More</button>
+                    <button>Policy</button>
                     <button
                         onClick={(e) => {
                             setOpenModal(false); 

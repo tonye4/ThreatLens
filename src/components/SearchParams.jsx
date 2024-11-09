@@ -1,5 +1,6 @@
 import { useState } from "react"; 
 import "./searchParams.css"; 
+import { useNavigate } from "react-router-dom";
 
 const SearchParams = () => {
     /*
@@ -8,6 +9,11 @@ const SearchParams = () => {
         age: '',
         profession: ''
     });*/
+
+
+
+    const navigate = useNavigate(); 
+
     const ETHNICITIES = ["Black", "White", "Asian", "Middle Eastern", "Indigenous"];
     const GENDER = ["Male", "Female", "Non-binary", "Other"];
     const [age, setAge] = useState(''); 
@@ -16,10 +22,9 @@ const SearchParams = () => {
     const [gender, setGender] = useState("");
     const [occupation, setOccupation] = useState(); 
 
-
     const handleSubmit = (event) => {
         event.preventDefault(); // default action is a page reload via submit, don't want that. 
-        console.log(inputs); // sends the state of our inputs to console for handling. 
+        navigate('./Dashboard') 
     }
 
     return (

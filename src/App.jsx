@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import SearchParams from "./components/SearchParams";
 import Consent from "./components/DataConsent";
-
-// TODO: Create forum search params 
-// TODO: Make do you consent form that pops up before forum
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
+    const [openModal, setOpenModal] = useState(true); 
+
     return (
+        <BrowserRouter>
         <div className="App">
-            <SearchParams />
-            <Consent />
+            {/*conditionally rendering modal*/}
+            {openModal && <Consent setOpenModal={setOpenModal} />}
+            <Routes>
+                <Route path="/" element={<SearchParams />} />
+                <Route path="/consent" element={<Consent />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+            </Routes>
         </div>
+        </BrowserRouter>
     );
 };
 
