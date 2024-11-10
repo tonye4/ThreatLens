@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'lens',
+    'lens.apps.LensConfig',
 ]
 
 MIDDLEWARE = [
