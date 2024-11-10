@@ -1,21 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
 
 html,
-body,
 #root,
 .App {
+/*
   display: flex;
   align-items: center;
   flex-direction: column;
+*/
   font-family: "Nunito", sans-serif;
-  background-color: #E6E6FA;;
+  /*background-color: #E6E6FA;*/
+  background-image: radial-gradient(circle,#525252, #2A2A2A); 
+
+}
+
+html{
+    scroll-behavior: smooth;
 }
 
 body{
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 .App{
     display: flex;
     position: relative;
+    align-items: center;
+    flex-direction: column;
 }

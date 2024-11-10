@@ -4,6 +4,7 @@ import SearchParams from "./components/SearchParams";
 import Consent from "./components/DataConsent";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
+import Navbar from "./components/Navbar";
 
 const App = () => {
     const [openModal, setOpenModal] = useState(true); 
@@ -11,6 +12,7 @@ const App = () => {
     return (
         <BrowserRouter>
         <div className="App">
+            <Navbar />
             {/*conditionally rendering modal*/}
             {openModal && <Consent setOpenModal={setOpenModal} />}
             <Routes>

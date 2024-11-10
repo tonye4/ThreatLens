@@ -1,4 +1,18 @@
+
+
+.heroSect {
+    display: flex;
+    width: 80rem;
+    height: 40rem;
+}
+
 .searchParamsBg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchParams {
     width: 25rem;
     height: 40rem;
     background-color: white;
@@ -20,6 +34,7 @@
     align-content: center;
     justify-content: space-evenly;
     font-weight: 600;
+    margin-bottom: 5rem;
 }
 
 input[type="text"],
