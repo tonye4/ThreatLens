@@ -19,6 +19,7 @@ And run this command:
 ```python manage.py runserver```
 
 
+
 **Technology and Tools Used**
 
 **Core Technologies:**
