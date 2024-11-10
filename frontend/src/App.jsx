@@ -18,6 +18,7 @@ const App = () => {
     const checkConnection = async () => {
       try {
         const response = await fetch('http://localhost:8000/api/test/');
+        console.log(response);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
