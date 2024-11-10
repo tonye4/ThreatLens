@@ -42,7 +42,7 @@ sia = SentimentIntensityAnalyzer()
 def sentiment_analysis(text):
     score = sia.polarity_scores(text)
     # Extract how likely it is for a comment to be negative
-    print(score)
+    # print(score)
     neg_score = score['neg']
     # Determine sentiment category
     sentiment_category = "Harmful" if score['neg'] > (score['pos'] + score['neu'])/2 else "Non-Harmful"
@@ -73,9 +73,9 @@ def emojis_analysis(text, path="potentially_harmful_emojis.txt"):
     for char in text:
         if char in harmful_emojis:
             harmful_emoji_count += 1
-            print(f"Found harmful emoji: {char}")  # Debugging line to confirm matching emojis
-        else:
-            print(f"Non-harmful or unrecognized emoji: {char}")  # For tracking mismatches
+            # print(f"Found harmful emoji: {char}")  # Debugging line to confirm matching emojis
+        # else:
+            # print(f"Non-harmful or unrecognized emoji: {char}")  # For tracking mismatches
     return harmful_emoji_count
 
 
@@ -108,7 +108,7 @@ def get_reputation_score(analyzed_comments):
         harmful_emoji_count = row['Harmful Emoji Count']
     
         # Process each row's data here
-        print(f"Comment: {comment}, Sentiment: {sentiment_category}, Harmful Words: {harmful_words_count}")
+        # print(f"Comment: {comment}, Sentiment: {sentiment_category}, Harmful Words: {harmful_words_count}")
 
         # Calculate reputation score for this row
         reputation_score = 0
@@ -124,7 +124,7 @@ def get_reputation_score(analyzed_comments):
             6 if harmful_emoji_count == 2 or harmful_emoji_count == 3 else
             10
         )
-        print(reputation_score)
+        # print(reputation_score)
 
         # Add or update the user's cumulative reputation score
         if username in user_reputation_scores:
@@ -135,7 +135,8 @@ def get_reputation_score(analyzed_comments):
     # Convert to DataFrame for easier viewing if desired
     reputation_df = pd.DataFrame(user_reputation_scores.items(), columns=['Username', 'Cumulative Reputation Score'])
     
-    print(reputation_df)
+    # Sort the DataFrame by 'Cumulative Reputation Score' in descending order
+    reputation_df = reputation_df.sort_values(by='Cumulative Reputation Score', ascending=False)
 
     return reputation_df
 
@@ -143,15 +144,14 @@ def get_reputation_score(analyzed_comments):
 ########################################################################################################################
 
 # Main Execution
+
+# Comments source file
 json_path = 'comments.json'
-# Run the harmful comment detection
+
+# Run the harmful comment detection: Analyze comments
 analyzed_comments = comments_analysis(json_path)
 print(analyzed_comments)
 
-#reputation_scores = get_reputation_score(analyzed_comments)
-# Create a DataFrame of the highest harassers (users with the most harmful comments)
-#highest_harassers = reputation_scores.reset_index()
-#highest_harassers.columns = ['User Account', 'Harmful Score']
-#print(highest_harassers)
-
+# Get the list accounts who are potentially harassing the given account
 reputation_scores_df = get_reputation_score(analyzed_comments)
+print(reputation_scores_df)
