@@ -16,7 +16,7 @@ export default function Navbar() {
 
     window.addEventListener("scroll", setFixed)
     return (
-        <header>
+        <header className="navHeader">
             <nav className="navbar">
                 <ul>
                     <li>

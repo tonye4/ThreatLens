@@ -2,7 +2,9 @@ import { useState } from "react";
 import "./consentModal.css"
 
 function Consent({setOpenModal}){
-
+    const openInNewTab = url => {
+        window.open(url, 'blank', 'noopener noreferrer')
+    }
     return( 
         <div className="consentModal-bg">
             <div className="modalContainer">
@@ -19,7 +21,11 @@ function Consent({setOpenModal}){
                     <p>By continuing, you agree with the information shared above. If you're unsure, feel free to read our full privacy policy for more details.</p>
                 </div>
                 <div className="footer">
-                    <button>Policy</button>
+                    <button
+                        onClick={(e) => {
+                            openInNewTab('https://www.youtube.com/watch?v=DKF2-zCNJ0A') // heheh :^)
+                        }}
+                    >Policy</button>
                     <button
                         onClick={(e) => {
                             setOpenModal(false); 

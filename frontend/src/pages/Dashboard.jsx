@@ -5,7 +5,7 @@ const Dashboard = () => {
                 
             </div>
             <div className="userHateStats">
-
+                
             </div>
         </div>
     )
