@@ -7,6 +7,18 @@ TikTok, with its massive user base, faces unique challenges in monitoring and mo
 Difficulties in identifying harmful content in real-time due to the sheer volume of posts and the complexity of language (e.g., slang, emojis).
 Increased risks to user mental health → vulnerable users, including teens and marginalized groups.
 
+**Run Instructions for the code**
+
+Fork the repository. Then run this command in your directory
+
+```pip install -r requirements.txt```
+
+Then run this command after navigating to ```ThreatLens/backend```
+And run this command: 
+
+```python manage.py runserver```
+
+
 **Technology and Tools Used**
 
 **Core Technologies:**
@@ -29,6 +41,15 @@ Checks the amount of times keywords from an offensive speech list appear in comm
 Emoji Analysis: Tracks emojis commonly associated with harmful or harassing intent.
 Identifies potentially harmful emojis in the comment
 Keeps a count of the harmful emojis in comments
+
+**Key Components**
+
+Data Scraper: 
+Collects data from social media platforms by utilizing APIs and web scraping techniques.
+Gathers user comments and posts, creating a rich dataset for analyzing online interactions and flagging harmful content.
+Data Processing and Analysis: 
+Employs Natural Language Processing (NLP) to evaluate the sentiment and tone of each comment, detecting signs of potentially threatening or aggressive language.
+Uses sentiment analysis to score the likelihood of harmful intent, flagging comments with high negativity or aggression.
 
 **Importance of Detecting Harmful Content**
 
