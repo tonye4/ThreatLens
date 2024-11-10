@@ -28,7 +28,3 @@ def get_all_tiktoks(uri):
 
     return data
 
-
-uri = "https://www.tiktok.com/@micasousa.pe"
-
-h2 = get_all_tiktoks(uri)
