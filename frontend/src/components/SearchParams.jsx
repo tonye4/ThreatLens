@@ -1,7 +1,6 @@
 import { useState } from "react"; 
 import "./searchParams.css"; 
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
 
 const SearchParams = () => {
     /* make hero section last!!
@@ -25,7 +24,7 @@ const SearchParams = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault(); // default action is a page reload via submit, don't want that. 
-        navigate('./Dashboard') 
+        navigate('./Results') 
     }
 
     return (
