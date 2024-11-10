@@ -1,4 +1,4 @@
-const Dashboard = () => {
+const Results = () => {
     return (
         <div className="dashBg">
             <div className="hateCommentsContainer">
@@ -11,4 +11,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard;
+export default Results;

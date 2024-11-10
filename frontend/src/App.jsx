@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import SearchParams from "./components/SearchParams";
 import Consent from "./components/DataConsent";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
+import Results from "./pages/Results";
 import Navbar from "./components/Navbar";
 
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<SearchParams />} />
                 <Route path="/consent" element={<Consent />} />
-                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/Results" element={<Results />} />
             </Routes>
         </div>
         </BrowserRouter>
