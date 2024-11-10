@@ -12,7 +12,7 @@ const App = () => {
     const [openModal, setOpenModal] = useState(true);
 
         useEffect(() => {
-        axios.post("http://127.0.0.1:8000/api/ping")
+        axios.get("http://127.0.0.1:8000/api/comments/")
             .then((response) => {
                 console.log("Ping successful:", response);
             })
@@ -38,5 +38,5 @@ const App = () => {
 };
 
 const container = document.getElementById("root");
-const root = createRoot(container); 
+const root = createRoot(container);
 root.render(<App />);

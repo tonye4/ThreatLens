@@ -1,12 +1,14 @@
 # Detect Threat in User Account Comments
 
-import json 
+import json
+from ...utils import reputation_df_to_json
 import pandas as pd
+import nltk
+nltk.download('vader_lexicon')
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import re  # To help with tokenization and text cleaning
 import codecs #to read unicode from a file
-from potentially_harmful_emojis import hamrful_emojis
-
+from .potentially_harmful_emojis import hamrful_emojis
 from nltk.corpus import stopwords
 from nltk.tokenize.regexp import regexp_tokenize #using regexp to quickly search through text
 from multiprocessing import Pool  #using pool to create faster lemmatization (https://stackoverflow.com/questions/38019823/faster-lemmatization-techniques-in-python)
@@ -30,7 +32,7 @@ def load_data(json_path):
 
 # Function to read txt file
 def get_harmful_keywords():
-    with open('potentially_harmful_words.txt', 'r') as file:
+    with open('/Users/aadit/Documents/GitHub/ThreatLens/backend/threat/TiktokComments/hackTrent/potentially_harmful_words.txt', 'r') as file:
         # Read each line, strip whitespace, and create a list of words
         harmful_keywords = [line.strip() for line in file]
         return harmful_keywords
@@ -67,7 +69,7 @@ def load_emojis(path):
     return emojis # returns the emojis as a string
 
 # Function to get count of the number of potentially harmful emojis
-def emojis_analysis(text, path="potentially_harmful_emojis.txt"):  
+def emojis_analysis(text, path="/Users/aadit/Documents/GitHub/ThreatLens/backend/threat/TiktokComments/hackTrent/potentially_harmful_words.txt"):
     harmful_emojis = set(load_emojis(path))  # Use a set for quicker lookup
     harmful_emoji_count = 0
     for char in text:
@@ -138,12 +140,15 @@ def get_reputation_score(analyzed_comments):
     # Sort the DataFrame by 'Cumulative Reputation Score' in descending order
     reputation_df = reputation_df.sort_values(by='Cumulative Reputation Score', ascending=False)
 
-    return reputation_df
+    # Use the utility function to convert DataFrame to JSON
+    reputation_json = reputation_df_to_json(reputation_df)
 
+    return reputation_json
 
 ########################################################################################################################
 
 # Main Execution
+<<<<<<< Updated upstream:threat/threat/TiktokComments/hack-trent/modelv2.py
 
 # Comments source file
 json_path = 'comments.json'
@@ -155,3 +160,17 @@ print(analyzed_comments)
 # Get the list accounts who are potentially harassing the given account
 reputation_scores_df = get_reputation_score(analyzed_comments)
 print(reputation_scores_df)
+=======
+#json_path = 'comments.json'
+# Run the harmful comment detection
+#analyzed_comments = comments_analysis(json_path)
+#print(analyzed_comments)
+
+#reputation_scores = get_reputation_score(analyzed_comments)
+# Create a DataFrame of the highest harassers (users with the most harmful comments)
+#highest_harassers = reputation_scores.reset_index()
+#highest_harassers.columns = ['User Account', 'Harmful Score']
+#print(highest_harassers)
+
+#reputation_scores_df = get_reputation_score(analyzed_comments)
+>>>>>>> Stashed changes:backend/threat/TiktokComments/hackTrent/modelv2.py
