@@ -11,19 +11,34 @@ import { useEffect } from "react";
 const App = () => {
     const [openModal, setOpenModal] = useState(true);
 
-        useEffect(() => {
-        axios.post("http://127.0.0.1:8000/api/ping")
-            .then((response) => {
-                console.log("Ping successful:", response);
-            })
-            .catch((error) => {
-                console.error("There was an error reaching the server", error);
-            });
-    }, []);
+  const [backendMessage, setBackendMessage] = useState('');
+
+  useEffect(() => {
+    // Function to fetch data from the Django backend
+    const checkConnection = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/api/test/');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setBackendMessage(data.message); // Set the message from backend
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setBackendMessage('Error communicating with backend');
+      }
+    };
+
+    checkConnection();
+  }, []);
 
     return (
         <BrowserRouter>
         <div className="App">
+    <div className="App">
+      <h1>React-Django Communication Test</h1>
+      <p>{backendMessage ? backendMessage : 'Loading...'}</p>
+    </div>
             <Navbar />
             {/*conditionally rendering modal*/}
             {openModal && <Consent setOpenModal={setOpenModal} />}
